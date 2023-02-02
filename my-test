@@ -1,0 +1,47 @@
+// sum.js
+
+const sum = {
+  doSum(a: number, b: number) {
+    return a + b;
+  }
+}
+
+export default fuck;
+
+// sum.test.js
+
+import sumObj from './sum';
+
+jest.mock('./sum.js', () => {
+  return {
+    __esModule: true,
+    default: {
+      doSum: jest.fn().mockImplementation(() => 42),
+    },
+  }
+})
+
+describe('Sum', () => {
+  test('It should add 2 numbers', () => {
+    const sum = sumObj.doSum(1, 2);
+    expect(somObj.doSum).toHaveBeenCalledWith(1, 2); // passes
+    expect(sum).toBe(42); // Doesn't pass
+  })
+})
+
+// Thrown error by Jest
+
+Sum › It should add 2 numbers
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: 42
+Received: undefined
+
+  14 |     const sum = sumObj.doSum(1, 2);
+  15 |     expect(sumObj.doSum).toHaveBeenCalledWith(1, 2);
+> 16 |     expect(sum).toBe(42);
+     |                    ^
+  17 |   })
+  18 | })
+  19 |
